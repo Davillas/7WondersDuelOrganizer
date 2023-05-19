@@ -1,6 +1,16 @@
-﻿namespace SevenWondersDuelOrganizer.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
-public class MainViewModel
+namespace SevenWondersDuelOrganizer.ViewModels;
+
+public partial class MainViewModel : ObservableObject
 {
-    public string Greeting => "Welcome to Avalonia!";
+    [ObservableProperty]
+    private int _Counter = 1;
+
+    [RelayCommand]
+    private void IncreaseCounter()
+    {
+        Counter++;
+    }
 }
