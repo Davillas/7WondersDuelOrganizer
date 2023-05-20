@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:SevenWondersDuelOrganizer.Views"
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="1000"
-        Width="700" Height="1000"
         x:Class="SevenWondersDuelOrganizer.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="7 Wonders: Duel Organizer">

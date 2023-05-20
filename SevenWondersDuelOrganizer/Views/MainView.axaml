@@ -6,7 +6,6 @@
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:material="using:Material.Icons.Avalonia"
              mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="1000"
-             Width="700" Height="1000"
              x:Class="SevenWondersDuelOrganizer.Views.MainView"
              x:DataType="vm:MainViewModel" >
   <Design.DataContext>
@@ -15,9 +14,10 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
+    <!-- Navigation Menu-->
 
-      <controls:SnackbarHost Grid.Row="1" Grid.Column="0" HostName="Root" Background="AliceBlue" >
-          <controls:NavigationDrawer Name="LeftDrawer"
+  <controls:SnackbarHost Grid.Row="1" Grid.Column="0" HostName="Root" Background="AliceBlue" >
+          <controls:NavigationDrawer Name="LeftDrawer" LeftDrawerWidth="200"
                                      LeftDrawerOpened="{Binding ElementName=NavDrawerSwitch, Path=IsChecked, Mode=TwoWay}" >
               <controls:NavigationDrawer.LeftDrawerContent>
                   <ScrollViewer>
@@ -49,15 +49,39 @@
 
                   <controls:ColorZone Background="AliceBlue">
 
-                      <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="Auto, *, *">
+                      <Grid RowDefinitions="Auto, *" >
+                          
+                          <!-- Top panel of page -->
+                        <Grid Grid.Row="0" 
+                              ColumnDefinitions="Auto, *, Auto" 
+                              Background="{DynamicResource TealMaterial}">
 
-                          <ToggleButton Background="Teal"  Name="NavDrawerSwitch">
-                              <ToggleButton.Content>
-                                  <material:MaterialIcon Kind="Menu"></material:MaterialIcon>
-                              </ToggleButton.Content>
+                            <Grid.Styles>
+                                <Style Selector="TextBlock">
+                                    <Setter Property="FontSize" Value="18"></Setter>
+                                    <Setter Property="FontWeight" Value="Black"></Setter>
+
+                                </Style>
+                            </Grid.Styles>
+                            <ToggleButton Grid.Column="0" Grid.Row="0" 
+                                        Width="40" Height="40"
+                                          Name="NavDrawerSwitch">
+                            <ToggleButton.Content>
+                              <material:MaterialIcon Kind="Menu"></material:MaterialIcon>
+                            </ToggleButton.Content>
                           </ToggleButton>
 
-                      </Grid>
+                          <TextBlock Grid.Column="1" 
+                                     Grid.Row="0" 
+                                     Text="New Game"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"></TextBlock>
+
+                        </Grid>
+
+
+
+                        </Grid>
                   </controls:ColorZone>
               </DockPanel>
 

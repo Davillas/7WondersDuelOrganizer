@@ -6,6 +6,7 @@
   <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
   <Application.Resources>
+      <SolidColorBrush x:Key="TealMaterial" Color="#FF009688"></SolidColorBrush>
   </Application.Resources>
 
 
