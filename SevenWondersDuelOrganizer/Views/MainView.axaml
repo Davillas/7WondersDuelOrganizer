@@ -3,24 +3,86 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:SevenWondersDuelOrganizer.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
-             Width="300" Height="450"
+             xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:material="using:Material.Icons.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="1000"
+             Width="700" Height="1000"
              x:Class="SevenWondersDuelOrganizer.Views.MainView"
-             x:DataType="vm:MainViewModel">
+             x:DataType="vm:MainViewModel" >
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <Grid RowDefinitions="Auto, *, *">
-    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Content="Add" Command="{Binding IncreaseCounterCommand}"></Button>
-        <TextBlock Margin="5" FontWeight="Black" FontSize="18" Text="{Binding Counter}"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </StackPanel>
 
-    <Rectangle Grid.Row="1" Width="280" Height="100" Fill="Orange"></Rectangle>
-    <Rectangle Grid.Row="2" Width="220" Height="100" Fill="Green"></Rectangle>
-  </Grid> 
+      <controls:SnackbarHost Grid.Row="1" Grid.Column="0" HostName="Root" Background="AliceBlue" >
+          <controls:NavigationDrawer Name="LeftDrawer"
+                                     LeftDrawerOpened="{Binding ElementName=NavDrawerSwitch, Path=IsChecked, Mode=TwoWay}" >
+              <controls:NavigationDrawer.LeftDrawerContent>
+                  <ScrollViewer>
+                      <StackPanel>
+                          <controls:ColorZone Mode="PrimaryDark" Height="180">
+                              <StackPanel>
+
+                                  </StackPanel>
+                          </controls:ColorZone>
+                          <ListBox Name="DrawerList"
+                                   Focusable="{Binding ElementName=LeftDrawer, Path=LeftDrawerOpened}">
+                              <ListBox.Styles>
+                                  <Style Selector="ListBoxItem">
+                                      <Setter Property="Height" Value="48" />
+                                      <Setter Property="Padding" Value="16,0" />
+                                      <Setter Property="VerticalContentAlignment" Value="Center" />
+                                  </Style>
+                              </ListBox.Styles>
+                          </ListBox>
+                      </StackPanel>
+                  </ScrollViewer>
+              </controls:NavigationDrawer.LeftDrawerContent>
+              
+              
+              
+              <!-- Main Body -->
+
+              <DockPanel>
+
+                  <controls:ColorZone Background="AliceBlue">
+
+                      <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="Auto, *, *">
+
+                          <ToggleButton Background="Teal"  Name="NavDrawerSwitch">
+                              <ToggleButton.Content>
+                                  <material:MaterialIcon Kind="Menu"></material:MaterialIcon>
+                              </ToggleButton.Content>
+                          </ToggleButton>
+
+                      </Grid>
+                  </controls:ColorZone>
+              </DockPanel>
+
+
+
+
+
+
+            </controls:NavigationDrawer>
+
+
+
+
+
+
+
+      </controls:SnackbarHost>
+
+    <!--   <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"> -->
+    <!--     <Button Content="Add" Command="{Binding IncreaseCounterCommand}"></Button> -->
+    <!--     <TextBlock Margin="5" FontWeight="Black" FontSize="18" Text="{Binding Counter}" -->
+    <!--                HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+    <!-- </StackPanel> -->
+    <!-- -->
+    <!-- <Rectangle Grid.Row="1" Width="280" Height="100" Fill="Orange"></Rectangle> -->
+    <!-- <Rectangle Grid.Row="2" Width="220" Height="100" Fill="Green"></Rectangle> -->
+
 </UserControl>
