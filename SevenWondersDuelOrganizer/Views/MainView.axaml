@@ -5,6 +5,8 @@
              xmlns:vm="clr-namespace:SevenWondersDuelOrganizer.ViewModels"
              xmlns:controls="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:material="using:Material.Icons.Avalonia"
+             xmlns:customControls="clr-namespace:SevenWondersDuelOrganizer.Styles.CustomControls"
+
              mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="1000"
              x:Class="SevenWondersDuelOrganizer.Views.MainView"
              x:DataType="vm:MainViewModel" >
@@ -14,91 +16,77 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
+
+
+
+
+    <!-- Main Grid-->
+    <Grid RowDefinitions="Auto, *" Name="MainGrid" Background="AliceBlue">
+
+
+
+
+
+
+      <!-- Top Panel Grid-->
+        <Grid Grid.Row="0" ShowGridLines="True" ColumnDefinitions="Auto, * , Auto" Background="{DynamicResource TealMaterial}" >
+            <Grid.Styles>
+                <Style Selector="TextBlock">
+                    <Setter Property="FontSize" Value="18"></Setter>
+                    <Setter Property="FontWeight" Value="DemiBold"></Setter>
+
+                </Style>
+            </Grid.Styles>
+          <Button Name="NavigationDrawerButton" Grid.Column="0" Grid.Row="0"
+                        Width="40" Height="40" Command="{Binding #NavigationDrawer.OpenCommandCommand}">
+
+              <Button.Content>
+                  <material:MaterialIcon Kind="Menu" ></material:MaterialIcon>
+              </Button.Content>
+          </Button>
+
+          <customControls:AnimatedNavigationDrawer
+              Grid.Column="0"
+              Name="NavigationDrawer"
+              Grid.RowSpan="3"
+          >
+              <Border Background="Red">
+                  <ListBox Name="DrawerList" ItemsSource="{Binding NavMenuItems}"
+                           SelectedItem="{Binding SelectedNavMenuItem}"
+                  >
+                      <ListBox.ItemTemplate>
+                          <DataTemplate>
+                              <StackPanel Orientation="Horizontal">
+                                  <material:MaterialIcon Kind="{Binding IconText}"></material:MaterialIcon>
+                                  <TextBlock Text="{Binding Text}"></TextBlock>
+                              </StackPanel>
+                          </DataTemplate>
+                      </ListBox.ItemTemplate>
+                      <ListBox.Styles>
+                          <Style Selector="ListBoxItem">
+                              <Setter Property="Height" Value="48" />
+                              <Setter Property="Padding" Value="16,0" />
+                              <Setter Property="VerticalContentAlignment" Value="Center" />
+                          </Style>
+                      </ListBox.Styles>
+
+                  </ListBox>
+              </Border>
+
+
+          </customControls:AnimatedNavigationDrawer>
+
+        </Grid>
+
+
+
+    </Grid>
+
+
+
     <!-- Navigation Menu-->
 
-  <controls:SnackbarHost Grid.Row="1" Grid.Column="0" HostName="Root" Background="AliceBlue" >
-          <controls:NavigationDrawer Name="LeftDrawer" LeftDrawerWidth="200"
-                                     LeftDrawerOpened="{Binding ElementName=NavDrawerSwitch, Path=IsChecked, Mode=TwoWay}" >
-              <controls:NavigationDrawer.LeftDrawerContent>
-                  <ScrollViewer>
-                      <StackPanel>
-                          <controls:ColorZone Mode="PrimaryDark" Height="180">
-                              <StackPanel>
 
-                                  </StackPanel>
-                          </controls:ColorZone>
-                          <ListBox Name="DrawerList"
-                                   Focusable="{Binding ElementName=LeftDrawer, Path=LeftDrawerOpened}">
-                              <ListBox.Styles>
-                                  <Style Selector="ListBoxItem">
-                                      <Setter Property="Height" Value="48" />
-                                      <Setter Property="Padding" Value="16,0" />
-                                      <Setter Property="VerticalContentAlignment" Value="Center" />
-                                  </Style>
-                              </ListBox.Styles>
-                          </ListBox>
-                      </StackPanel>
-                  </ScrollViewer>
-              </controls:NavigationDrawer.LeftDrawerContent>
-              
-              
-              
-              <!-- Main Body -->
-
-              <DockPanel>
-
-                  <controls:ColorZone Background="AliceBlue">
-
-                      <Grid RowDefinitions="Auto, *" >
-                          
-                          <!-- Top panel of page -->
-                        <Grid Grid.Row="0" 
-                              ColumnDefinitions="Auto, *, Auto" 
-                              Background="{DynamicResource TealMaterial}">
-
-                            <Grid.Styles>
-                                <Style Selector="TextBlock">
-                                    <Setter Property="FontSize" Value="18"></Setter>
-                                    <Setter Property="FontWeight" Value="Black"></Setter>
-
-                                </Style>
-                            </Grid.Styles>
-                            <ToggleButton Grid.Column="0" Grid.Row="0" 
-                                        Width="40" Height="40"
-                                          Name="NavDrawerSwitch">
-                            <ToggleButton.Content>
-                              <material:MaterialIcon Kind="Menu"></material:MaterialIcon>
-                            </ToggleButton.Content>
-                          </ToggleButton>
-
-                          <TextBlock Grid.Column="1" 
-                                     Grid.Row="0" 
-                                     Text="New Game"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"></TextBlock>
-
-                        </Grid>
-
-
-
-                        </Grid>
-                  </controls:ColorZone>
-              </DockPanel>
-
-
-
-
-
-
-            </controls:NavigationDrawer>
-
-
-
-
-
-
-
-      </controls:SnackbarHost>
 
     <!--   <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"> -->
     <!--     <Button Content="Add" Command="{Binding IncreaseCounterCommand}"></Button> -->

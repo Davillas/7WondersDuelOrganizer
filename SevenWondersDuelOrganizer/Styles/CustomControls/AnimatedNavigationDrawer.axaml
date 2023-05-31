@@ -1,0 +1,23 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:SevenWondersDuelOrganizer.Styles.CustomControls"
+        xmlns:material="using:Material.Icons.Avalonia">
+  <Design.PreviewWith>
+    <controls:AnimatedNavigationDrawer >
+        <Button>
+            <Button.Content>
+                <material:MaterialIcon Kind="Menu"></material:MaterialIcon>
+            </Button.Content>
+        </Button>
+    </controls:AnimatedNavigationDrawer>
+  </Design.PreviewWith>
+
+  <Style Selector="controls|AnimatedNavigationDrawer">
+    <!-- Set Defaults -->
+    <Setter Property="Template">
+      <ControlTemplate>
+         <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

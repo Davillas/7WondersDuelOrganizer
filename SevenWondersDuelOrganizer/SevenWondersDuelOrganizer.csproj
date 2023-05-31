@@ -21,4 +21,8 @@
     <PackageReference Include="Material.Avalonia" Version="3.0.0-avalonia11-preview4.172-nightly" />
     <PackageReference Include="Material.Icons.Avalonia" Version="2.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
 </Project>
